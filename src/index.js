@@ -11,8 +11,11 @@ const app = express();
 app.use(express.json());
 //Cors enabled
 app.use(cors());
-//Morgan for dev
-app.use(morgan("tiny"));
+
+if (process.env.NODE_ENV === "development") {
+  //Morgan for dev
+  app.use(morgan("tiny"));
+}
 
 const port = process.env.PORT || 5000;
 
@@ -41,6 +44,10 @@ app.post("/mail-tracker", (req, res) => {
     }
     return res.status(200).send({ message: "Mail send successfully" });
   });
+});
+
+app.get("/", (req, res) => {
+  res.send("Nodemailer Express App");
 });
 
 //Start server
