@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const morgan = require("morgan");
+//const morgan = require("morgan");
 const nodemailer = require("nodemailer");
 const { generateHtml } = require("./util/helper");
 
@@ -12,10 +12,10 @@ app.use(express.json());
 //Cors enabled
 app.use(cors());
 
-if (process.env.NODE_ENV === "development") {
-  //Morgan for dev
-  app.use(morgan("tiny"));
-}
+// if (process.env.NODE_ENV === "development") {
+//   //Morgan for dev
+//   app.use(morgan("tiny"));
+// }
 
 const port = process.env.PORT || 5000;
 
